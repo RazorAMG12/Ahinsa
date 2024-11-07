@@ -59,103 +59,107 @@
     }
 
     /* Heart Page Styles */
-    .heart-page {
-        display: none;
-        flex-direction: column;
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        justify-content: center;
         align-items: center;
-        text-align: center;
+        background: linear-gradient(45deg, #fbc2eb, #a18cd1, #fad0c4, #ff9a9e);
+        background-size: 300% 300%;
+        animation: backgroundShift 8s ease infinite;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
     }
 
-    .heart {
+    /* Keyframes for animated background gradient */
+    @keyframes backgroundShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* Infinity Symbol */
+    .infinity {
         position: relative;
-        width: 150px;
+        width: 250px;
         height: 150px;
-        transform: rotate(45deg);
-        animation: float 3s ease-in-out infinite, glow 1.5s ease-in-out infinite;
+        border: 5px solid #ff77a9;
+        border-radius: 50%;
+        box-shadow: 0 0 20px #ff77a9, 0 0 40px #ff77a9, 0 0 60px #ff77a9;
+        animation: pulse 1.5s infinite alternate, glow 2s ease-in-out infinite;
     }
 
-    .heart:before,
-    .heart:after {
+    .infinity:before, .infinity:after {
         content: '';
         position: absolute;
-        width: 150px;
+        width: 250px;
         height: 150px;
-        background-color: #ff3366;
+        border: 5px solid #ff77a9;
         border-radius: 50%;
+        box-shadow: 0 0 15px #ff77a9, 0 0 30px #ff77a9, 0 0 45px #ff77a9;
     }
 
-    .heart:before {
-        top: -75px;
-        left: 0;
-    }
-
-    .heart:after {
-        left: 75px;
+    /* Positioning the loops of the infinity symbol */
+    .infinity:before {
+        left: -130px;
         top: 0;
     }
 
+    .infinity:after {
+        left: 130px;
+        top: 0;
+    }
+
+    /* Centered "I love you" message */
     .message {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         font-size: 2em;
-        color: #ff77a9;
-        margin-top: 20px;
-        animation: shine 3s ease-in-out infinite, float 3s ease-in-out infinite;
+        color: #ff3366;
+        font-weight: bold;
+        animation: rainbowText 3s ease infinite;
+        background: linear-gradient(90deg, #ff6b6b, #ffcc70, #ff9a9e, #fbc2eb, #a18cd1);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
     }
 
-    /* Animation Effects */
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0) rotate(45deg);
-        }
-        50% {
-            transform: translateY(-10px) rotate(45deg);
-        }
+    /* Rainbow text animation */
+    @keyframes rainbowText {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
 
+    /* Glow effect */
     @keyframes glow {
         0%, 100% {
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.7), 0 0 25px rgba(255, 105, 180, 0.5);
+            box-shadow: 0 0 15px #ff77a9, 0 0 30px #ff77a9, 0 0 45px #ff77a9;
         }
         50% {
-            box-shadow: 0 0 30px rgba(255, 105, 180, 0.8), 0 0 50px rgba(255, 105, 180, 0.6);
+            box-shadow: 0 0 30px #ff9a9e, 0 0 60px #ff9a9e, 0 0 90px #ff9a9e;
         }
     }
 
-    @keyframes shine {
-        0%, 100% {
-            opacity: 1;
+    /* Pulsing effect for infinity */
+    @keyframes pulse {
+        from {
+            transform: scale(1);
         }
-        50% {
-            opacity: 0.7;
+        to {
+            transform: scale(1.05);
         }
     }
 </style>
 </head>
 <body>
-    <!-- Login Form -->
-    <div class="login-container" id="login-container">
-        <div class="login-box">
-            <h2>Login</h2>
-            <input type="text" id="username" placeholder="Username">
-            <button onclick="checkLogin()">Log In</button>
-        </div>
-    </div>
-
-    <!-- Heart Page -->
-    <div class="heart-page" id="heart-page">
-        <div class="heart"></div>
+    <!-- Infinity Symbol with "I love you" message -->
+    <div class="infinity">
         <div class="message">I love you</div>
     </div>
-
-<script>
-    function checkLogin() {
-        const username = document.getElementById("username").value;
-        if (username === "Akarsha") {
-            document.getElementById("login-container").style.display = "none";
-            document.getElementById("heart-page").style.display = "flex";
-        } else {
-            alert("Incorrect Username!");
-        }
-    }
-</script>
 </body>
 </html>
