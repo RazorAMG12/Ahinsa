@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Love Message</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #f6d365, #fda085);
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            font-size: 4em;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(to right, #ff4b1f, #ff9068, #ffcc33, #ff66b3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ff4b1f, 0 0 20px #ff9068, 0 0 30px #ffcc33, 0 0 40px #ff66b3;
+            }
+            to {
+                text-shadow: 0 0 20px #ff4b1f, 0 0 30px #ff9068, 0 0 40px #ffcc33, 0 0 50px #ff66b3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>I love you</h1>
+</body>
+</html>
